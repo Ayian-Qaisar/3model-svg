@@ -51,7 +51,7 @@
 
       .svg-container {
         width: 50%;
-        max-width: 540px;
+        max-width: 560px;
         position: relative;
       }
 
@@ -102,6 +102,7 @@
       .layer:hover {
         transform: translateY(-4px);
         z-index: 10;
+        filter: drop-shadow(0 8px 16px rgba(29, 25, 75, 0.2));
       }
 
       .layer-1:hover path.cls-2 {
@@ -110,11 +111,16 @@
 
       .layer-2:hover path.cls-3 {
         fill: var(--midnight-indigo);
-        filter: brightness(1.1);
       }
 
       .layer-3:hover path.cls-2 {
         fill: var(--midnight-indigo);
+      }
+
+      /* Enhanced hover highlight - brightness and smooth transition */
+      .layer:hover path {
+        filter: brightness(1.2);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       /* Click effect */
@@ -135,7 +141,7 @@
         transform: translateX(-20px);
         pointer-events: none;
         z-index: 100;
-        width: calc(50% - 40px);
+        width: calc(50% - 50px);
         max-width: 400px;
       }
 
@@ -148,12 +154,12 @@
       /* Associate description with layer */
       .description-panel[data-for="positionering"] {
         top: 10%;
-        left: calc(50% + 40px);
+        left: calc(50% + 10px);
       }
 
       .description-panel[data-for="strategie"] {
         top: 50%;
-        left: calc(50% + 40px);
+        left: calc(50% + 10px);
         transform: translateY(-50%) translateX(-20px);
       }
 
@@ -163,7 +169,7 @@
 
       .description-panel[data-for="activatie"] {
         bottom: 10%;
-        left: calc(50% + 40px);
+        left: calc(50% + 10px);
       }
 
       .description-title {
