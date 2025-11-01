@@ -5,7 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Partner Model - Marketing Partners</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap");
+
+      @font-face {
+        font-family: "Mosafin";
+        src: url("font/Mosafin-Bold.woff2") format("woff2"),
+          url("font/Mosafin-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Mosafin";
+        src: url("font/Mosafin-SemiBold.woff2") format("woff2"),
+          url("font/Mosafin-SemiBold.ttf") format("truetype");
+        font-weight: 600;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Mosafin";
+        src: url("font/Mosafin-Medium.woff2") format("woff2"),
+          url("font/Mosafin-Medium.ttf") format("truetype");
+        font-weight: 500;
+        font-style: normal;
+      }
 
       :root {
         --midnight-indigo: #1d194b;
@@ -20,10 +44,19 @@
         padding: 0;
         box-sizing: border-box;
       }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Mosafin", sans-serif;
+      }
+      p {
+        font-family: "Rethink Sans", sans-serif;
+      }
 
       .partner-model-container {
-        font-family: "Inter", "Rethink Sans", -apple-system, BlinkMacSystemFont,
-          sans-serif;
         background: var(--white);
         max-width: 1400px;
         margin: 0 auto;
@@ -176,9 +209,8 @@
       }
 
       .description-title {
-        font-family: "Inter", sans-serif;
         font-size: 28px;
-        font-weight: 600;
+        font-weight: 800;
         color: var(--midnight-indigo);
         margin-bottom: 8px;
         line-height: 1.2;
@@ -186,7 +218,7 @@
 
       .description-subtitle {
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 600;
         color: var(--lavender-mist);
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -194,6 +226,7 @@
       }
 
       .description-text {
+        font-family: "Rethink Sans", sans-serif;
         font-size: 16px;
         line-height: 1.6;
         color: var(--midnight-indigo);
@@ -379,33 +412,33 @@
 
         <!-- Description Panel for Positionering -->
         <div class="description-panel" data-for="positionering">
-          <div class="description-subtitle">De fundering</div>
-          <div class="description-title">Positionering</div>
-          <div class="description-text">
+          <h3 class="description-subtitle">De fundering</h3>
+          <h2 class="description-title">Positionering</h2>
+          <p class="description-text">
             Samen bepalen we wie je bent, waar je voor staat en hoe je je
             onderscheidt in de markt. Zo ontstaat een verhaal dat klopt en
             raakt.
-          </div>
+          </p>
         </div>
 
         <!-- Description Panel for Strategie -->
         <div class="description-panel" data-for="strategie">
-          <div class="description-subtitle">De route</div>
-          <div class="description-title">Strategie</div>
-          <div class="description-text">
+          <h3 class="description-subtitle">De route</h3>
+          <h2 class="description-title">Strategie</h2>
+          <p class="description-text">
             We vertalen de positionering naar een concreet plan. Helder,
             gefocust en praktisch — zodat keuzes makkelijker worden.
-          </div>
+          </p>
         </div>
 
         <!-- Description Panel for Activatie -->
         <div class="description-panel" data-for="activatie">
-          <div class="description-subtitle">De uitvoering</div>
-          <div class="description-title">Activatie</div>
-          <div class="description-text">
+          <h3 class="description-subtitle">De uitvoering</h3>
+          <h2 class="description-title">Activatie</h2>
+          <p class="description-text">
             We brengen alles tot leven met campagnes, content en design die jouw
             verhaal zichtbaar maken en versterken.
-          </div>
+          </p>
         </div>
       </div>
     </div>
