@@ -27,7 +27,7 @@
         background: var(--white);
         max-width: 1400px;
         margin: 0 auto;
-        padding: 40px 20px;
+        /* padding: 40px 20px; */
       }
 
       .instruction-text {
@@ -37,6 +37,11 @@
         font-weight: 500;
         margin-bottom: 30px;
         opacity: 0.8;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
       }
 
       .model-wrapper {
@@ -44,14 +49,16 @@
         width: 100%;
         background: var(--white);
         border-radius: 12px;
-        padding: 40px;
-        box-shadow: 0 4px 20px rgba(29, 25, 75, 0.08);
-        min-height: 600px;
+        /* padding: 40px; */
+        height: 100svh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
       }
 
       .svg-container {
-        width: 50%;
-        max-width: 560px;
+        width: 600px;
         position: relative;
       }
 
@@ -102,7 +109,7 @@
       .layer:hover {
         transform: translateY(-4px);
         z-index: 10;
-        filter: drop-shadow(0 8px 16px rgba(29, 25, 75, 0.2));
+        filter: drop-shadow(0 8px 16px rgba(29, 25, 75, 0.745));
       }
 
       .layer-1:hover path.cls-2 {
@@ -152,24 +159,20 @@
       }
 
       /* Associate description with layer */
-      .description-panel[data-for="positionering"] {
-        top: 10%;
-        left: calc(50% + 10px);
-      }
 
       .description-panel[data-for="strategie"] {
-        top: 50%;
-        left: calc(50% + 10px);
-        transform: translateY(-50%) translateX(-20px);
-      }
-
-      .description-panel[data-for="strategie"].active {
-        transform: translateY(-50%) translateX(0);
+        top: 15%;
+        left: 16%;
       }
 
       .description-panel[data-for="activatie"] {
-        bottom: 10%;
-        left: calc(50% + 10px);
+        top: 40%;
+        left: 60%;
+      }
+
+      .description-panel[data-for="positionering"] {
+        bottom: 15%;
+        left: 10%;
       }
 
       .description-title {
@@ -231,14 +234,6 @@
           margin-top: 20px;
           box-shadow: 0 4px 16px rgba(29, 25, 75, 0.08);
         }
-
-        .description-panel[data-for="strategie"] {
-          transform: none !important;
-        }
-
-        .description-panel[data-for="strategie"].active {
-          transform: none !important;
-        }
       }
 
       @media (max-width: 768px) {
@@ -297,7 +292,7 @@
   <body>
     <div class="partner-model-container">
       <p class="instruction-text">
-        💡 Beweeg over de lagen om te ontdekken hoe het Partnermodel werkt.
+        Beweeg over de lagen om te ontdekken hoe het Partnermodel werkt.
       </p>
 
       <div class="model-wrapper">
@@ -326,14 +321,14 @@
             <!-- Layer 1: Positionering (Top layer) -->
             <g
               class="layer layer-1"
-              data-layer="positionering"
+              data-layer="activatie"
               tabindex="0"
               role="button"
-              aria-label="Positionering - De fundering"
+              aria-label="Activatie - De uitvoering"
             >
               <a
-                href="https://marketing-partners.nl/positionering"
-                onclick="return handleLayerClick(event, 'positionering')"
+                href="https://marketing-partners.nl/activatie"
+                onclick="return handleLayerClick(event, 'activatie')"
               >
                 <path
                   class="cls-2"
@@ -364,14 +359,14 @@
             <!-- Layer 3: Activatie (Bottom layer) -->
             <g
               class="layer layer-3"
-              data-layer="activatie"
+              data-layer="positionering"
               tabindex="0"
               role="button"
-              aria-label="Activatie - De uitvoering"
+              aria-label="Positionering - De fundering"
             >
               <a
-                href="https://marketing-partners.nl/activatie"
-                onclick="return handleLayerClick(event, 'activatie')"
+                href="https://marketing-partners.nl/positionering"
+                onclick="return handleLayerClick(event, 'positionering')"
               >
                 <path
                   class="cls-2"
