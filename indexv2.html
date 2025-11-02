@@ -5,7 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Partner Model - Marketing Partners</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap");
+
+      @font-face {
+        font-family: "Mosafin";
+        src: url("font/Mosafin-Bold.woff2") format("woff2"),
+          url("font/Mosafin-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Mosafin";
+        src: url("font/Mosafin-SemiBold.woff2") format("woff2"),
+          url("font/Mosafin-SemiBold.ttf") format("truetype");
+        font-weight: 600;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Mosafin";
+        src: url("font/Mosafin-Medium.woff2") format("woff2"),
+          url("font/Mosafin-Medium.ttf") format("truetype");
+        font-weight: 500;
+        font-style: normal;
+      }
 
       :root {
         --midnight-indigo: #1d194b;
@@ -20,14 +44,23 @@
         padding: 0;
         box-sizing: border-box;
       }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Mosafin", sans-serif;
+      }
+      p {
+        font-family: "Rethink Sans", sans-serif;
+      }
 
       .partner-model-container {
-        font-family: "Inter", "Rethink Sans", -apple-system, BlinkMacSystemFont,
-          sans-serif;
         background: var(--white);
         max-width: 1400px;
         margin: 0 auto;
-        padding: 40px 20px;
+        /* padding: 40px 20px; */
       }
 
       .instruction-text {
@@ -37,6 +70,60 @@
         font-weight: 500;
         margin-bottom: 30px;
         opacity: 0.8;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+      }
+
+      /* VERSION 2: Progress Tracker */
+      .exploration-tracker {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-family: "Mosafin", sans-serif;
+        font-size: 14px;
+        color: var(--midnight-indigo);
+        opacity: 0.7;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 12px 20px;
+        border-radius: 24px;
+        box-shadow: 0 2px 12px rgba(29, 25, 75, 0.1);
+        transition: var(--transition);
+      }
+
+      .exploration-tracker:hover {
+        opacity: 1;
+        box-shadow: 0 4px 16px rgba(29, 25, 75, 0.15);
+      }
+
+      .tracker-text {
+        font-weight: 500;
+        font-size: 13px;
+      }
+
+      .tracker-count {
+        font-weight: 700;
+        color: var(--lavender-mist);
+        font-size: 16px;
+      }
+
+      .tracker-complete {
+        color: #4caf50;
+      }
+
+      @media (max-width: 768px) {
+        .exploration-tracker {
+          top: 15px;
+          right: 15px;
+          font-size: 12px;
+          padding: 8px 14px;
+        }
       }
 
       .model-wrapper {
@@ -44,14 +131,16 @@
         width: 100%;
         background: var(--white);
         border-radius: 12px;
-        padding: 40px;
-        box-shadow: 0 4px 20px rgba(29, 25, 75, 0.08);
-        min-height: 600px;
+        /* padding: 40px; */
+        height: 100svh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
       }
 
       .svg-container {
-        width: 50%;
-        max-width: 540px;
+        width: 600px;
         position: relative;
       }
 
@@ -66,6 +155,21 @@
         cursor: pointer;
         transition: var(--transition);
         transform-origin: center;
+        opacity: 0;
+        animation: layerAppear 0.6s ease-out forwards;
+      }
+
+      /* Staggered animation delays - bottom to top */
+      .layer-3 {
+        animation-delay: 0.2s;
+      }
+
+      .layer-2 {
+        animation-delay: 0.5s;
+      }
+
+      .layer-1 {
+        animation-delay: 0.8s;
       }
 
       .layer path {
@@ -102,19 +206,28 @@
       .layer:hover {
         transform: translateY(-4px);
         z-index: 10;
+        filter: drop-shadow(0 8px 16px rgba(29, 25, 75, 0.745));
       }
 
+      /* Keep original colors on hover with enhanced brightness */
       .layer-1:hover path.cls-2 {
-        fill: var(--midnight-indigo);
+        fill: var(--lavender-mist);
+        filter: brightness(1.15) saturate(1.1);
       }
 
       .layer-2:hover path.cls-3 {
         fill: var(--midnight-indigo);
-        filter: brightness(1.1);
+        filter: brightness(1.15) saturate(1.1);
       }
 
       .layer-3:hover path.cls-2 {
-        fill: var(--midnight-indigo);
+        fill: var(--lavender-mist);
+        filter: brightness(1.15) saturate(1.1);
+      }
+
+      /* Enhanced hover highlight - smooth transition */
+      .layer:hover path {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       /* Click effect */
@@ -135,7 +248,7 @@
         transform: translateX(-20px);
         pointer-events: none;
         z-index: 100;
-        width: calc(50% - 40px);
+        width: calc(50% - 50px);
         max-width: 400px;
       }
 
@@ -146,30 +259,39 @@
       }
 
       /* Associate description with layer */
-      .description-panel[data-for="positionering"] {
-        top: 10%;
-        left: calc(50% + 40px);
-      }
 
       .description-panel[data-for="strategie"] {
-        top: 50%;
-        left: calc(50% + 40px);
-        transform: translateY(-50%) translateX(-20px);
-      }
-
-      .description-panel[data-for="strategie"].active {
-        transform: translateY(-50%) translateX(0);
+        top: 15%;
+        left: 16%;
       }
 
       .description-panel[data-for="activatie"] {
-        bottom: 10%;
-        left: calc(50% + 40px);
+        top: 40%;
+        left: 60%;
+      }
+
+      .description-panel[data-for="positionering"] {
+        bottom: 15%;
+        left: 10%;
+      }
+
+      .description-step {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: var(--lavender-mist);
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 50%;
+        margin-bottom: 12px;
       }
 
       .description-title {
-        font-family: "Inter", sans-serif;
         font-size: 28px;
-        font-weight: 600;
+        font-weight: 700;
         color: var(--midnight-indigo);
         margin-bottom: 8px;
         line-height: 1.2;
@@ -177,7 +299,7 @@
 
       .description-subtitle {
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 600;
         color: var(--lavender-mist);
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -185,6 +307,7 @@
       }
 
       .description-text {
+        font-family: "Rethink Sans", sans-serif;
         font-size: 16px;
         line-height: 1.6;
         color: var(--midnight-indigo);
@@ -225,14 +348,6 @@
           margin-top: 20px;
           box-shadow: 0 4px 16px rgba(29, 25, 75, 0.08);
         }
-
-        .description-panel[data-for="strategie"] {
-          transform: none !important;
-        }
-
-        .description-panel[data-for="strategie"].active {
-          transform: none !important;
-        }
       }
 
       @media (max-width: 768px) {
@@ -270,6 +385,17 @@
         }
       }
 
+      @keyframes layerAppear {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
       .description-panel.active {
         animation: fadeIn 0.3s ease-out;
       }
@@ -286,12 +412,37 @@
         text-decoration: none;
         outline: none;
       }
+
+      /* VERSION 2: Reduced Motion for Accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        .layer {
+          animation: none !important;
+          opacity: 1;
+        }
+
+        .layer:hover {
+          transform: none !important;
+        }
+
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="partner-model-container">
+      <!-- VERSION 2: Progress Tracker -->
+      <div class="exploration-tracker">
+        <span class="tracker-text">Verkend:</span>
+        <span class="tracker-count">0/3</span>
+      </div>
+
       <p class="instruction-text">
-        💡 Beweeg over de lagen om te ontdekken hoe het Partnermodel werkt.
+        Beweeg over de lagen om te ontdekken hoe het PartnerModel werkt van
+        fundament tot uitvoering.
       </p>
 
       <div class="model-wrapper">
@@ -320,14 +471,14 @@
             <!-- Layer 1: Positionering (Top layer) -->
             <g
               class="layer layer-1"
-              data-layer="positionering"
+              data-layer="activatie"
               tabindex="0"
               role="button"
-              aria-label="Positionering - De fundering"
+              aria-label="Activatie - De uitvoering"
             >
               <a
-                href="https://marketing-partners.nl/positionering"
-                onclick="return handleLayerClick(event, 'positionering')"
+                href="https://marketing-partners.nl/activatie"
+                onclick="return handleLayerClick(event, 'activatie')"
               >
                 <path
                   class="cls-2"
@@ -358,14 +509,14 @@
             <!-- Layer 3: Activatie (Bottom layer) -->
             <g
               class="layer layer-3"
-              data-layer="activatie"
+              data-layer="positionering"
               tabindex="0"
               role="button"
-              aria-label="Activatie - De uitvoering"
+              aria-label="Positionering - De fundering"
             >
               <a
-                href="https://marketing-partners.nl/activatie"
-                onclick="return handleLayerClick(event, 'activatie')"
+                href="https://marketing-partners.nl/positionering"
+                onclick="return handleLayerClick(event, 'positionering')"
               >
                 <path
                   class="cls-2"
@@ -378,33 +529,36 @@
 
         <!-- Description Panel for Positionering -->
         <div class="description-panel" data-for="positionering">
-          <div class="description-subtitle">De fundering</div>
-          <div class="description-title">Positionering</div>
-          <div class="description-text">
+          <div class="description-step">1</div>
+          <h3 class="description-subtitle">De fundering</h3>
+          <h2 class="description-title">Positionering</h2>
+          <p class="description-text">
             Samen bepalen we wie je bent, waar je voor staat en hoe je je
             onderscheidt in de markt. Zo ontstaat een verhaal dat klopt en
             raakt.
-          </div>
+          </p>
         </div>
 
         <!-- Description Panel for Strategie -->
         <div class="description-panel" data-for="strategie">
-          <div class="description-subtitle">De route</div>
-          <div class="description-title">Strategie</div>
-          <div class="description-text">
+          <div class="description-step">2</div>
+          <h3 class="description-subtitle">De route</h3>
+          <h2 class="description-title">Strategie</h2>
+          <p class="description-text">
             We vertalen de positionering naar een concreet plan. Helder,
             gefocust en praktisch — zodat keuzes makkelijker worden.
-          </div>
+          </p>
         </div>
 
         <!-- Description Panel for Activatie -->
         <div class="description-panel" data-for="activatie">
-          <div class="description-subtitle">De uitvoering</div>
-          <div class="description-title">Activatie</div>
-          <div class="description-text">
+          <div class="description-step">3</div>
+          <h3 class="description-subtitle">De uitvoering</h3>
+          <h2 class="description-title">Activatie</h2>
+          <p class="description-text">
             We brengen alles tot leven met campagnes, content en design die jouw
             verhaal zichtbaar maken en versterken.
-          </div>
+          </p>
         </div>
       </div>
     </div>
@@ -432,6 +586,19 @@
         const descriptionPanels =
           document.querySelectorAll(".description-panel");
 
+        // VERSION 2: Progress Tracker Logic
+        const exploredLayers = new Set();
+        const trackerCount = document.querySelector(".tracker-count");
+        const tracker = document.querySelector(".exploration-tracker");
+
+        function updateProgress() {
+          trackerCount.textContent = `${exploredLayers.size}/3`;
+          if (exploredLayers.size === 3) {
+            trackerCount.classList.add("tracker-complete");
+            tracker.style.background = "rgba(76, 175, 80, 0.1)";
+          }
+        }
+
         // Add inactive state to non-hovered layers and show description
         layers.forEach((layer) => {
           const layerName = layer.getAttribute("data-layer");
@@ -440,6 +607,10 @@
           );
 
           layer.addEventListener("mouseenter", function () {
+            // VERSION 2: Track explored layers
+            exploredLayers.add(layerName);
+            updateProgress();
+
             // Add inactive state to other layers
             layers.forEach((l) => {
               if (l !== this) {
