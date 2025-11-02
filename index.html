@@ -106,6 +106,21 @@
         cursor: pointer;
         transition: var(--transition);
         transform-origin: center;
+        opacity: 0;
+        animation: layerAppear 0.6s ease-out forwards;
+      }
+
+      /* Staggered animation delays - bottom to top */
+      .layer-3 {
+        animation-delay: 0.2s;
+      }
+
+      .layer-2 {
+        animation-delay: 0.5s;
+      }
+
+      .layer-1 {
+        animation-delay: 0.8s;
       }
 
       .layer path {
@@ -145,21 +160,24 @@
         filter: drop-shadow(0 8px 16px rgba(29, 25, 75, 0.745));
       }
 
+      /* Keep original colors on hover with enhanced brightness */
       .layer-1:hover path.cls-2 {
-        fill: var(--midnight-indigo);
+        fill: var(--lavender-mist);
+        filter: brightness(1.15) saturate(1.1);
       }
 
       .layer-2:hover path.cls-3 {
         fill: var(--midnight-indigo);
+        filter: brightness(1.15) saturate(1.1);
       }
 
       .layer-3:hover path.cls-2 {
-        fill: var(--midnight-indigo);
+        fill: var(--lavender-mist);
+        filter: brightness(1.15) saturate(1.1);
       }
 
-      /* Enhanced hover highlight - brightness and smooth transition */
+      /* Enhanced hover highlight - smooth transition */
       .layer:hover path {
-        filter: brightness(1.2);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
@@ -206,6 +224,20 @@
       .description-panel[data-for="positionering"] {
         bottom: 15%;
         left: 10%;
+      }
+
+      .description-step {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: var(--lavender-mist);
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 50%;
+        margin-bottom: 12px;
       }
 
       .description-title {
@@ -304,6 +336,17 @@
         }
       }
 
+      @keyframes layerAppear {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
       .description-panel.active {
         animation: fadeIn 0.3s ease-out;
       }
@@ -325,7 +368,8 @@
   <body>
     <div class="partner-model-container">
       <p class="instruction-text">
-        Beweeg over de lagen om te ontdekken hoe het Partnermodel werkt.
+        Beweeg over de lagen om te ontdekken hoe het PartnerModel werkt van
+        fundament tot uitvoering.
       </p>
 
       <div class="model-wrapper">
@@ -412,6 +456,7 @@
 
         <!-- Description Panel for Positionering -->
         <div class="description-panel" data-for="positionering">
+          <div class="description-step">1</div>
           <h3 class="description-subtitle">De fundering</h3>
           <h2 class="description-title">Positionering</h2>
           <p class="description-text">
@@ -423,6 +468,7 @@
 
         <!-- Description Panel for Strategie -->
         <div class="description-panel" data-for="strategie">
+          <div class="description-step">2</div>
           <h3 class="description-subtitle">De route</h3>
           <h2 class="description-title">Strategie</h2>
           <p class="description-text">
@@ -433,6 +479,7 @@
 
         <!-- Description Panel for Activatie -->
         <div class="description-panel" data-for="activatie">
+          <div class="description-step">3</div>
           <h3 class="description-subtitle">De uitvoering</h3>
           <h2 class="description-title">Activatie</h2>
           <p class="description-text">
